@@ -1,0 +1,357 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>COVID-19 Detector</title>
+<script>
+function test()
+{
+	var po=document.createElement("p");
+	po.innerHTML=`
+1]Sit in a comfortable position.<br><br>
+2]Take a deep breath and hold it inside of yourself for about 10-15 seconds.<br><br>
+3]Let it go after the time interval.Repeat the steps 2-3 times to make sure of the result.<br><br>
+
+Conclusion:<br><br>
+
+While holding your breath,if the following happens, you have a high chance of catching the novel coronavirus.<br><br>
+
+1]You cough while holding your breath.<br><br>
+2]You let it go too quickly.<br>
+
+This is one of the prominient tests of detecting the novel coronavirus.<br><br>
+Note that even if you do not show any of the above,you still need to take care of yourself.   `;
+	 document.getElementById("rr").appendChild(po);
+	 document.getElementById("su").disabled=true;
+};
+
+
+
+
+function execute() 
+{
+var age=document.getElementById('age').value;
+var day1=document.getElementById('1-5');
+var day2=document.getElementById('6-10');
+var day3=document.getElementById('10+');
+var bdpain=document.getElementById('bdpain');
+var fever=document.getElementById('fever');
+var drycgh=document.getElementById('drycgh');
+var dbreath=document.getElementById('dbreath');
+var ftg=document.getElementById('ftg');
+if(    ((isNaN(age)==true) || (age=="")) || (day1.checked==false && day2.checked==false  && day3.checked==false) || ((bdpain.checked==false) && (fever.checked==false) && (drycgh.checked==false) && (dbreath.checked==false)) )
+{
+		alert("Not Valid!")
+		document.getElementById("age").value=""
+	
+}
+else
+	{
+		if(age>=21 && age<=40)
+		{
+		//console.log(isNaN(age))
+		//console.log(age=="")
+		//console.log()
+		young();
+		document.getElementById("rttt").disabled=true;
+		
+		}
+	else
+		{
+			//console.log(isNaN(age))
+			//console.log(age=="")
+			old();
+			document.getElementById("rttt").disabled=true;
+		}
+		
+	}
+	
+};	
+function closeNav()
+{
+	document.getElementById('overlay').style.height="0%"
+}
+
+function openNav()
+{
+	document.getElementById('overlay').style.height="50%"
+}
+
+function young()
+{
+var day1=document.getElementById('1-5').checked;
+var day2=document.getElementById('6-10').checked;
+var bdpain=document.getElementById('bdpain');
+var fever=document.getElementById('fever');
+var drycgh=document.getElementById('drycgh');
+var dbreath=document.getElementById('dbreath');
+var ftg=document.getElementById('ftg');
+if(((drycgh.checked==true) && (ftg.checked==true) && (dbreath.checked==true)) ||  ((bdpain.checked==true)&&(ftg.checked==true)&&(dbreath.checked==true)))
+ {
+	if(day1==true)
+	{
+		stayIsolated();
+	}
+	else if(day2==true)
+	{
+		homeQuarantine();
+	}
+	else
+	{
+		HospitalTest();
+	}
+ }
+ else
+ {
+	 localdoctor();
+ }
+};
+
+function old()
+{
+var day1=document.getElementById('1-5').checked;
+
+var bdpain=document.getElementById('bdpain');
+var fever=document.getElementById('fever');
+var drycgh=document.getElementById('drycgh');
+var dbreath=document.getElementById('dbreath');
+var ftg=document.getElementById('ftg');
+if(((drycgh.checked==true) && (ftg.checked==true) && (dbreath.checked==true)) ||  ((bdpain.checked==true)&&(ftg.checked==true)&&(dbreath.checked==true)))
+ {
+	if(day1==true)
+	{
+		if(age>=41 && age <=45)
+		{
+			stayIsolated();
+		}
+		else
+		{
+		  homeQuarantine();
+		}		  
+	}
+	else
+	{
+		HospitalTest();
+	}
+	
+	
+ }
+ else
+ {
+	 localdoctor();
+	 stayIsolated();
+ }
+	
+};
+
+function HospitalTest()
+{
+   var po=document.createElement("p");
+  po.innerHTML=`This is a serious case of novel coronavirus.You immediately need to go to a Hospital and get tested yourself immediately. Don't worry!!.
+Most novel coronavirus patients recover effectively.Don't worry you will be fine and once again see your family and the world.  `;
+  document.getElementById("u").appendChild(po);
+	
+	
+	
+};
+function localdoctor()
+{
+  var po=document.createElement("p");
+  po.innerHTML=`Hmmm.....This doesn't seem that dangerous.You might be having a normal flu.A visit to your family doctor would surely help you.
+However,You must continue to drink hot/warm water , as a precautionary measure of the COVID-19.
+Also Continue maintaining strict hygiene like washing hands and maintain social distancing(outside and inside the house).
+Also avoid going out of the house....STRICTLY.
+
+Have a good day. :)`;
+  document.getElementById("u").appendChild(po);
+};
+function stayIsolated()
+{
+  var po=document.createElement("p");
+  po.innerHTML=`You might be having a slight chance of catching the novel corornavirus.This is the time that you will have to stay in Isolation.
+Isolation is a procedure that seperates the sick people,with a contagious disease, from the people who are not sick.
+Drink lots of hot water and restrict your movements in the house.Going outside is a no-go for you.Wash your hands regularly with soap for 30 seconds.
+Don't worry at all , you will be fine.  `;
+  document.getElementById("u").appendChild(po);
+};
+function homeQuarantine()
+{
+	var po=document.createElement("p");
+  po.innerHTML=`You might have been exposed to the novel coronavirus.You will need to be home quarantined.
+                You can refer the instructions from the goverment website for procedure on home Quarantine.
+               Drink lots of hot liquids and have positive thoughts in your mind.`;
+  document.getElementById("u").appendChild(po);
+	
+};	
+
+</script>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+#bq{
+background-color: purple;
+background-repeat: no-repeat;
+background-size:cover;
+}
+
+#uu{
+                         width: 900px;
+                         height:300px;
+						 border-radius: 20px;
+                         background: rgba(0,0,0,0.3);
+                         color: #fff;
+                         transform: translate(-40%,-40%);
+			       		 top: 22%;
+                         left:30%;
+                         position: absolute;
+                         box-sizing: border-box;
+                   
+						
+}
+#rq{
+                        padding-top:15px;
+                        font-weight:bold;
+                        border: none;
+						border-radius: 20px;
+                        background:transparent;
+						transform: translate(-8%,-30%);
+                        outline: none;
+                        font-size: 15px;
+                        color: #fff;
+						padding: 50px;
+                        height: 40px; 
+						width:50px;
+						right:70%;
+
+
+}
+td{
+    padding:10px;
+}
+
+#u{
+                         width: 900px;
+                         height:520px;
+                         background: rgba(0,0,0,0.2);
+                         color: #fff;
+						 border-radius: 20px;
+                         transform: translate(-10%,-20%);
+			       		 top:70%;
+                         left:10%;
+                         position: absolute;
+                         box-sizing: border-box;
+						 font-weight:bold;
+						 padding:20px;
+
+}
+#su{
+                                height:70px;
+                                width: 250px;
+								left:80%;
+								transform:translate(1000px,30px);
+                                color: blue;
+                                background-color: orange;
+                                border-radius: 20px;
+                                border-color: blue;
+                                font-size: 30px; 
+								font-weight:bold
+								margin-top:40px;
+                                margin-left: 10px;
+                        }
+#su:hover
+{
+                                cursor: pointer;
+                                background-color: #39dc79;
+                                border-color: #000;
+}
+#rr
+{
+                         width:350px;
+                         height:520px;
+                         background: rgba(0,0,0,0.2);
+                         color: #fff;
+						 border-radius: 20px;
+                         transform: translate(830px,-70%);
+			       		 top:80%;
+                         left:10%;
+                         position: absolute;
+						 font-size:17px;
+                         box-sizing: border-box;
+						 font-weight:bold;
+						 padding:20px;
+   
+}
+#rttt
+{
+						margin-top:10px;
+						height:30px;
+                        width: 55px;
+						border-radius:10px;
+						color: #FFFFFFFF;
+						background-color:blue;
+						font-weight:bold;
+					
+}
+#rttt:hover
+{
+						cursor:pointer;
+						color:green;
+						background-color:#FFFFFFFF;
+						
+}
+#name
+{
+	background: rgba(0,0,0,0);
+	color:white;
+	font-weight:bold
+}
+#number
+{
+ background: rgba(0,0,0,0);
+ color:white;
+ 
+ font-weight:bold
+}
+#age
+{
+background: rgba(0,0,0,0);
+color:white;
+	font-weight:bold
+}
+#email
+{
+background: rgba(0,0,0,0);
+color:white;
+	font-weight:bold
+}
+
+<span onclick="openNav()">open</span>
+
+</style>
+<body id="bq">
+<div id="uu">
+<table id="rq">
+<tr><td><br><br><h2>Name:</h2><input type="text" id="name"></td>
+<td><br><br><h2>Mobile No.:</h2><input type="text" id="number"></td></tr>
+<br>
+<tr><td><h2>Age:</h2><input type="text" id="age"></td>
+<td><h2>Email:</h2><input type="text" id="email"></td></tr>
+</table>
+</div>
+
+<div id="u"><h2>Fill the rest of the details </h2><br>What are the symptoms you are having??(Select all that apply)<br><br>
+<input type="checkbox"  id="bdpain">Body Pain</input><br><br>
+<input type="checkbox"  id="fever">Fever</input><br><br>
+<input type="checkbox"  id="drycgh">Dry Cough</input><br><br>
+<input type="checkbox"  id="dbreath">Difficulty in Breathing</input><br><br>
+<input type="checkbox"  id="ftg">Fatigue</input><br><br>
+For how many days have you been feeling like this?<br><br>
+<input type="radio" id="1-5" name="days" >1-5</input><br><br>
+<input type="radio" id="6-10" name="days">6-10</input><br><br>
+<input type="radio" id="10+" name="days">10+</input><br><br><br>
+<input type="button" id='rttt' value="Check" onclick="execute()" ></input>
+<br>
+</div>
+<input type="button" id="su" value="Take the test!!" onclick="test()"></button>
+<div id="rr" ></div>
+</body>
+</html>
